@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl8eqbx2ku0i0"]
+
+[ext_resource type="Script" path="res://codigo/bounce_zone.gd" id="1_q5tpm"]
+
+[node name="bounce_zone" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_q5tpm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

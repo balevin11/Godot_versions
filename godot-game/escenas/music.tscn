@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bctaje4hfxiux"]
+
+[ext_resource type="AudioStream" uid="uid://kiev08mtxe1f" path="res://sonidos/o-coelhinho-que-cacava-baloes-258711.mp3" id="1_rcx5y"]
+
+[node name="music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_rcx5y")
+autoplay = true
+bus = &"Music"

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://0e64jei85yn6"]
+
+[ext_resource type="Script" path="res://codigo/dead_zone.gd" id="1_r14bk"]
+[ext_resource type="AudioStream" uid="uid://chnkr2verfo6r" path="res://sonidos/game-over-arcade-6435.mp3" id="2_f34st"]
+
+[node name="dead_zone" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_r14bk")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="sound_dead" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_f34st")
+volume_db = -6.047
+bus = &"Sound effects"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
