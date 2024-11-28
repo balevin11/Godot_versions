@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://s8ten3gx6sqo"]
+
+[ext_resource type="Script" path="res://codigo/gem_velocity.gd" id="1_5jymp"]
+[ext_resource type="Texture2D" uid="uid://b653jxe6hiclt" path="res://craftpix-net-396765-free-simple-platformer-game-kit-pixel-art/3 Objects/Gems/6.png" id="2_gn2bd"]
+[ext_resource type="AudioStream" uid="uid://bfn4f1qtihaw4" path="res://sonidos/energy-drink-effect-230559.mp3" id="3_lrffo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4ybj"]
+atlas = ExtResource("2_gn2bd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08r6o"]
+atlas = ExtResource("2_gn2bd")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_233oo"]
+atlas = ExtResource("2_gn2bd")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agj5i"]
+atlas = ExtResource("2_gn2bd")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5q2u"]
+atlas = ExtResource("2_gn2bd")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3y6y"]
+atlas = ExtResource("2_gn2bd")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oulif"]
+atlas = ExtResource("2_gn2bd")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0hrug"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4ybj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08r6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_233oo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agj5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5q2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3y6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oulif")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wh7eg"]
+radius = 5.0
+
+[node name="gem_velocity" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_5jymp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0hrug")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wh7eg")
+
+[node name="recolected_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_lrffo")
+bus = &"Sound effects"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="recolected_sound" to="." method="_on_recolected_sound_finished"]

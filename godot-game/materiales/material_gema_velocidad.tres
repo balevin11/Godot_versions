@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bx2kqg3lt48r6"]
+
+[ext_resource type="Shader" uid="uid://jhmp6ygt8oqh" path="res://shaders/shader_gema_velocidad.tres" id="1_xmwnt"]
+
+[resource]
+shader = ExtResource("1_xmwnt")
+shader_parameter/color = Color(0, 0.639216, 1, 1)
+shader_parameter/velocidad_de_parpadeo = 15

@@ -3,11 +3,20 @@ extends CharacterBody2D
 @onready var sound_jump: AudioStreamPlayer2D = $sound_jump
 
 const SPEED = 200.0
+const RUN_SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const DOUBLE_JUMP_VELOCITY = -300
 const MAX_JUMPS = 2
 var jumps = 0
 var flooor = true
+var run = false
+signal effect_run
+
+func start_run() -> void:
+	effect_run.emit()
+
+func activate_material(material : Material) -> void:
+	$AnimatedSprite2D.material = material
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("appear")
@@ -19,13 +28,19 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	if Input.is_action_pressed("ui_right"):
-		velocity.x =  SPEED
+		if run:
+			velocity.x = RUN_SPEED
+		else:
+			velocity.x =  SPEED
 		if floor:
 			$AnimatedSprite2D.play("run")
 		$AnimatedSprite2D.flip_h = false
 		
 	elif Input.is_action_pressed("ui_left"):
-		velocity.x = -SPEED
+		if run:
+			velocity.x = -RUN_SPEED
+		else:
+			velocity.x = -SPEED
 		if floor:
 			$AnimatedSprite2D.play("run")
 		$AnimatedSprite2D.flip_h = true

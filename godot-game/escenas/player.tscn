@@ -1,9 +1,11 @@
-[gd_scene load_steps=69 format=3 uid="uid://d8y0vbxsdm7i"]
+[gd_scene load_steps=71 format=3 uid="uid://d8y0vbxsdm7i"]
 
 [ext_resource type="Script" path="res://codigo/character.gd" id="1_5v8tn"]
+[ext_resource type="Script" path="res://codigo/run_effect.gd" id="2_7q12n"]
 [ext_resource type="Texture2D" uid="uid://2flhsrq7yuj0" path="res://godot-game/images/craftpix-net-396765-free-simple-platformer-game-kit-pixel-art/1 Main Characters/1/Double_Jump.png" id="2_ao4la"]
 [ext_resource type="Texture2D" uid="uid://yx57o8603tdy" path="res://godot-game/images/craftpix-net-396765-free-simple-platformer-game-kit-pixel-art/1 Main Characters/Appearing.png" id="2_jqvix"]
 [ext_resource type="Texture2D" uid="uid://vplqm0rbbb5b" path="res://craftpix-net-396765-free-simple-platformer-game-kit-pixel-art/1 Main Characters/1/Fall.png" id="3_0wihe"]
+[ext_resource type="Material" uid="uid://bx2kqg3lt48r6" path="res://materiales/material_gema_velocidad.tres" id="3_eeuxn"]
 [ext_resource type="Texture2D" uid="uid://daap26f7s782n" path="res://godot-game/images/craftpix-net-396765-free-simple-platformer-game-kit-pixel-art/1 Main Characters/Desappearing.png" id="3_phvhi"]
 [ext_resource type="Texture2D" uid="uid://bqjcxgmlxcgn4" path="res://godot-game/images/craftpix-net-396765-free-simple-platformer-game-kit-pixel-art/1 Main Characters/1/Hit.png" id="4_jcfv8"]
 [ext_resource type="Texture2D" uid="uid://dicgqn23ey8mm" path="res://godot-game/images/craftpix-net-396765-free-simple-platformer-game-kit-pixel-art/1 Main Characters/1/Idle.png" id="4_kcu3s"]
@@ -459,6 +461,14 @@ position = Vector2(252, -225)
 collision_layer = 2
 script = ExtResource("1_5v8tn")
 
+[node name="run_effect" type="Node" parent="."]
+script = ExtResource("2_7q12n")
+pitch_efecto_velocity = 1.5
+MATERIAL = ExtResource("3_eeuxn")
+
+[node name="Timer" type="Timer" parent="run_effect"]
+one_shot = true
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_v3dxt")
 animation = &"idle"
@@ -478,5 +488,7 @@ shape = SubResource("CapsuleShape2D_eio66")
 
 [node name="sound_jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_io8dm")
-volume_db = -7.256
 bus = &"Sound effects"
+
+[connection signal="timeout" from="run_effect/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="run_effect/Timer" to="run_effect" method="_on_timer_timeout"]

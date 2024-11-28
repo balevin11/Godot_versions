@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cg1kwxy0i6cco"]
+[gd_scene load_steps=18 format=3 uid="uid://cg1kwxy0i6cco"]
 
 [ext_resource type="Script" path="res://codigo/game_manager.gd" id="1_h85sh"]
 [ext_resource type="PackedScene" uid="uid://d8y0vbxsdm7i" path="res://escenas/player.tscn" id="2_b7vjv"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://0e64jei85yn6" path="res://escenas/dead_zone.tscn" id="8_w8d22"]
 [ext_resource type="PackedScene" uid="uid://bl70rubyxykuy" path="res://escenas/enemy_tv.tscn" id="9_tfvw8"]
 [ext_resource type="FontFile" uid="uid://k7a47l40wqn3" path="res://PixelOperator8.ttf" id="10_8st2o"]
+[ext_resource type="PackedScene" uid="uid://s8ten3gx6sqo" path="res://escenas/gem_velocity.tscn" id="11_0phcl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h6a17"]
 texture = ExtResource("3_2nthe")
@@ -528,3 +529,6 @@ text = "Según vayas avanzando
 te encontrarás con nuevos 
 enemigos cada uno con su 
 habilidad especial."
+
+[node name="gem_velocity" parent="." instance=ExtResource("11_0phcl")]
+position = Vector2(536, -61)
