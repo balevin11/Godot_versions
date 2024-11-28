@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://cg1kwxy0i6cco"]
+[gd_scene load_steps=19 format=3 uid="uid://cg1kwxy0i6cco"]
 
+[ext_resource type="PackedScene" uid="uid://bmy8lxxusxxch" path="res://escenas/hud.tscn" id="1_f37bb"]
 [ext_resource type="Script" path="res://codigo/game_manager.gd" id="1_h85sh"]
 [ext_resource type="PackedScene" uid="uid://d8y0vbxsdm7i" path="res://escenas/player.tscn" id="2_b7vjv"]
 [ext_resource type="Texture2D" uid="uid://b4p4l77hm3lla" path="res://craftpix-net-396765-free-simple-platformer-game-kit-pixel-art/2 Locations/Tiles/Tileset.png" id="3_2nthe"]
@@ -407,6 +408,8 @@ sources/3 = SubResource("TileSetAtlasSource_e3dur")
 distance = 1.0
 
 [node name="Node2D" type="Node2D"]
+
+[node name="HUD" parent="." instance=ExtResource("1_f37bb")]
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true

@@ -12,6 +12,7 @@ const PITCH_DEFAULT : float = 1
 func _ready() -> void:
 	player.effect_run.connect(_on_player_run_effect)
 	timer.timeout.connect(_on_timer_timeout)
+	Music.pitch_scale = PITCH_DEFAULT
 	
 func _on_player_run_effect() -> void:
 	player.run = true

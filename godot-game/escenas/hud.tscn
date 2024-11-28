@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmy8lxxusxxch"]
+
+[ext_resource type="Script" path="res://codigo/hud.gd" id="1_4r0g2"]
+[ext_resource type="Texture2D" uid="uid://cf62pu1pamjvd" path="res://godot-game/images/craftpix-net-396765-free-simple-platformer-game-kit-pixel-art/3 Objects/Gems/2.png" id="1_vbx3s"]
+[ext_resource type="FontFile" uid="uid://k7a47l40wqn3" path="res://PixelOperator8.ttf" id="2_vh17n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tq0va"]
+atlas = ExtResource("1_vbx3s")
+region = Rect2(0, 0, 16.0931, 16)
+
+[node name="HUD" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_4r0g2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 26.0
+offset_top = 25.0
+offset_right = 66.0
+offset_bottom = 65.0
+texture = SubResource("AtlasTexture_tq0va")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 65.0
+offset_top = 32.0
+offset_right = 116.0
+offset_bottom = 62.0
+theme_override_fonts/font = ExtResource("2_vh17n")
+theme_override_font_sizes/font_size = 27
+text = "x "
+
+[node name="contador_monedas" type="Label" parent="."]
+offset_left = 92.0
+offset_top = 35.0
+offset_right = 143.0
+offset_bottom = 65.0
+theme_override_fonts/font = ExtResource("2_vh17n")
+theme_override_font_sizes/font_size = 27
+text = "0"
