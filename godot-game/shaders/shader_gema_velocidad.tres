@@ -1,9 +1,7 @@
 [gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://jhmp6ygt8oqh"]
 
-[sub_resource type="VisualShaderNodeIntParameter" id="VisualShaderNodeIntParameter_tlbwe"]
-parameter_name = "velocidad_de_parpadeo"
-default_value_enabled = true
-default_value = 15
+[sub_resource type="VisualShaderNodeIntConstant" id="VisualShaderNodeIntConstant_ykgiy"]
+constant = 15
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_tim6x"]
 source = 2
@@ -39,7 +37,6 @@ code = "shader_type canvas_item;
 render_mode blend_mix;
 
 uniform vec4 color : source_color = vec4(0.000000, 0.639216, 1.000000, 1.000000);
-uniform int velocidad_de_parpadeo = 15;
 
 
 
@@ -57,12 +54,9 @@ void fragment() {
 	float n_out5p0 = TIME;
 
 
-// IntParameter:10
-	int n_out10p0 = velocidad_de_parpadeo;
-
-
 // FloatOp:9
-	float n_out9p0 = n_out5p0 * float(n_out10p0);
+	float n_in9p1 = 15.00000;
+	float n_out9p0 = n_out5p0 * n_in9p1;
 
 
 // FloatFunc:6
@@ -89,7 +83,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-484.471, 234.85)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(540, 160)
@@ -109,6 +102,6 @@ nodes/fragment/8/node = SubResource("VisualShaderNodeFloatOp_lxopt")
 nodes/fragment/8/position = Vector2(80, 480)
 nodes/fragment/9/node = SubResource("VisualShaderNodeFloatOp_176fi")
 nodes/fragment/9/position = Vector2(-520, 480)
-nodes/fragment/10/node = SubResource("VisualShaderNodeIntParameter_tlbwe")
-nodes/fragment/10/position = Vector2(-860, 620)
-nodes/fragment/connections = PackedInt32Array(3, 0, 4, 1, 2, 0, 4, 0, 4, 0, 0, 0, 6, 0, 7, 0, 7, 0, 8, 0, 8, 0, 4, 2, 5, 0, 9, 0, 9, 0, 6, 0, 10, 0, 9, 1)
+nodes/fragment/10/node = SubResource("VisualShaderNodeIntConstant_ykgiy")
+nodes/fragment/10/position = Vector2(-521.791, 758.184)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 1, 2, 0, 4, 0, 4, 0, 0, 0, 6, 0, 7, 0, 7, 0, 8, 0, 8, 0, 4, 2, 5, 0, 9, 0, 9, 0, 6, 0)

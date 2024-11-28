@@ -472,14 +472,11 @@ one_shot = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_v3dxt")
 animation = &"idle"
+autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1, -2)
 zoom = Vector2(1.75, 1.75)
-limit_left = -280
-limit_top = -540
-limit_right = 2260
-limit_bottom = 90
 limit_smoothed = true
 position_smoothing_enabled = true
 

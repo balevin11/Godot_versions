@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce552ctalfblb"]
+
+[ext_resource type="Texture2D" uid="uid://dm2jkmdhc8jno" path="res://craftpix-net-396765-free-simple-platformer-game-kit-pixel-art/5 GUI/Icons/Icon_01.png" id="1_juvej"]
+
+[node name="dead_icon" type="Sprite2D"]
+light_mask = 0
+position = Vector2(106, 364)
+texture = ExtResource("1_juvej")

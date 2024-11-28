@@ -7,6 +7,7 @@ extends Area2D
 
 
 func _on_body_entered(body: Node2D) -> void:
+		
 		game_manager.new_coin()
 		sound_coin.play()
 		animated_sprite.visible = false
