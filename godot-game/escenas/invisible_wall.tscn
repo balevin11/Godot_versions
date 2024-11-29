@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://by03jqwvy5q3t"]
+[gd_scene load_steps=2 format=3 uid="uid://miq8i0h58tjk"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_ttxsw"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_bbr5u"]
 
-[node name="invisible wall" type="Area2D"]
+[node name="invisible_wall" type="StaticBody2D"]
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("SegmentShape2D_ttxsw")
+shape = SubResource("SegmentShape2D_bbr5u")

@@ -457,7 +457,7 @@ animations = [{
 
 [node name="player" type="CharacterBody2D"]
 z_index = 1
-position = Vector2(252, -225)
+position = Vector2(331, -186)
 collision_layer = 2
 script = ExtResource("1_5v8tn")
 
@@ -475,7 +475,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-1, -2)
+position = Vector2(0, -36)
 zoom = Vector2(1.75, 1.75)
 limit_smoothed = true
 position_smoothing_enabled = true

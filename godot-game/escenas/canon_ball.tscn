@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://8x7dowq8ufod"]
+
+[ext_resource type="Script" path="res://codigo/canon_ball.gd" id="1_guj2l"]
+[ext_resource type="Texture2D" uid="uid://bdytomflm2gb3" path="res://craftpix-net-396765-free-simple-platformer-game-kit-pixel-art/4 Enemies/4/Cannonball1.png" id="2_3h18x"]
+[ext_resource type="Texture2D" uid="uid://c3od2yuxicg7e" path="res://craftpix-net-396765-free-simple-platformer-game-kit-pixel-art/4 Enemies/4/Cannonball2.png" id="3_d6gh0"]
+[ext_resource type="PackedScene" uid="uid://0e64jei85yn6" path="res://escenas/dead_zone.tscn" id="4_rnrun"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lsux4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3h18x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_d6gh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3h18x")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i342f"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7y8ei"]
+radius = 5.0
+
+[node name="canon_ball" type="StaticBody2D"]
+collision_mask = 3
+script = ExtResource("1_guj2l")
+
+[node name="canon_ball" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lsux4")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.809347
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i342f")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(2.38419e-07, 0)
+scale = Vector2(0.5, 0.5)
+
+[node name="dead_zone" parent="." instance=ExtResource("4_rnrun")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dead_zone"]
+shape = SubResource("CircleShape2D_7y8ei")
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

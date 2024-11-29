@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpj04eq7uba7w"]
+
+[ext_resource type="Texture2D" uid="uid://d00nriovtkn7b" path="res://craftpix-net-396765-free-simple-platformer-game-kit-pixel-art/6 Traps/4.png" id="1_foq42"]
+[ext_resource type="PackedScene" uid="uid://0e64jei85yn6" path="res://escenas/dead_zone.tscn" id="2_qu4t4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yretd"]
+size = Vector2(15, 9.5)
+
+[node name="pinchos" type="Sprite2D"]
+texture = ExtResource("1_foq42")
+region_enabled = true
+region_rect = Rect2(112, 29, 18, 20)
+
+[node name="dead_zone" parent="." instance=ExtResource("2_qu4t4")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dead_zone"]
+position = Vector2(-0.5, 5.25)
+shape = SubResource("RectangleShape2D_yretd")

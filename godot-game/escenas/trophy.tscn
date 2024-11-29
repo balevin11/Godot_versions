@@ -1,0 +1,146 @@
+[gd_scene load_steps=21 format=3 uid="uid://cpuc2c4s3rck2"]
+
+[ext_resource type="Script" path="res://codigo/trophy.gd" id="1_xw0fx"]
+[ext_resource type="Texture2D" uid="uid://dnpg7nk0vj4mu" path="res://craftpix-net-396765-free-simple-platformer-game-kit-pixel-art/3 Objects/Checkpoints/End_Idle.png" id="2_8aenk"]
+[ext_resource type="Texture2D" uid="uid://6qnn75qm7hvn" path="res://craftpix-net-396765-free-simple-platformer-game-kit-pixel-art/3 Objects/Checkpoints/End_Pressed.png" id="3_jqwl5"]
+[ext_resource type="AudioStream" uid="uid://dsiup44wiesok" path="res://sonidos/victorymale-version-230553.mp3" id="4_p7keg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hal16"]
+size = Vector2(35, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2ci8"]
+atlas = ExtResource("2_8aenk")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxel4"]
+atlas = ExtResource("2_8aenk")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xg55"]
+atlas = ExtResource("2_8aenk")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ea2lg"]
+atlas = ExtResource("2_8aenk")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d35gw"]
+atlas = ExtResource("2_8aenk")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rn5a"]
+atlas = ExtResource("2_8aenk")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12new"]
+atlas = ExtResource("2_8aenk")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0234x"]
+atlas = ExtResource("3_jqwl5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fovjb"]
+atlas = ExtResource("3_jqwl5")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar6d3"]
+atlas = ExtResource("3_jqwl5")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f825x"]
+atlas = ExtResource("3_jqwl5")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llvdt"]
+atlas = ExtResource("3_jqwl5")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0uyr"]
+atlas = ExtResource("3_jqwl5")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6i5ty"]
+atlas = ExtResource("3_jqwl5")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wocp0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2ci8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxel4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xg55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ea2lg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d35gw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rn5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12new")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0234x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fovjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ar6d3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f825x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llvdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0uyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6i5ty")
+}],
+"loop": true,
+"name": &"win",
+"speed": 15.0
+}]
+
+[node name="trophy" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_xw0fx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 6)
+shape = SubResource("RectangleShape2D_hal16")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wocp0")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.198456
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_p7keg")
+volume_db = -13.302
+bus = &"Sound effects"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

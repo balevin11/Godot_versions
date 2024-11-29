@@ -33,6 +33,7 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		flooor = false
 
 	if Input.is_action_pressed("ui_right"):
 		if run:
@@ -60,7 +61,12 @@ func _physics_process(delta: float) -> void:
 	
 		
 	if Input.is_action_just_pressed("ui_up") and jumps < MAX_JUMPS:
-		if jumps == 0:
+		if jumps == 0  && !flooor:
+			$AnimatedSprite2D.play("double_jump")
+			velocity.y = 0
+			velocity.y = DOUBLE_JUMP_VELOCITY
+			sound_jump.play()
+		elif jumps == 0 && flooor:
 			$AnimatedSprite2D.play("jump")
 			velocity.y += JUMP_VELOCITY
 			sound_jump.play()
@@ -70,6 +76,8 @@ func _physics_process(delta: float) -> void:
 			velocity.y = DOUBLE_JUMP_VELOCITY
 			sound_jump.play()
 			jumps += 1
+		
+			
 		flooor = false
 		
 	if velocity.y > 0 && !flooor && jumps <= 1:

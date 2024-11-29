@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://wwj1kj581a21"]
+
+[ext_resource type="Texture2D" uid="uid://cx1u1esoeuyqw" path="res://craftpix-net-396765-free-simple-platformer-game-kit-pixel-art/7 Levels/Tiled/Tileset.png" id="1_ann7x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5pya"]
+size = Vector2(46, 14)
+
+[node name="platform1" type="AnimatableBody2D"]
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ann7x")
+region_enabled = true
+region_rect = Rect2(192, 128, 47, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_k5pya")
+one_way_collision = true

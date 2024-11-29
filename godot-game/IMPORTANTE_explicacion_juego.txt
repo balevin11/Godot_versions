@@ -1,0 +1,4 @@
+Antes de iniciar nuestro juego debemos lanzar nuestro servidor "GodotApi" dentro de la carpeta "server". El servidor debe ser ejecutado mediante cmd con el comando
+ "python manage.py runserver 0.0.0.0:8000", si no, puede llegar a causar algún error en el registro de muertes.
+Para limpiar las marcas de muerte desde un cmp lanzar un post al localhost con direccion limpiar_coordenadas.
+
